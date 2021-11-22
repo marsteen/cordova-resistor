@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+
+
+<title>Resistor calculator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+</head>
+
+<body bgcolor="#404040">
+
+
+<script>
+
+function calcOhm1()
+{
+    return (parseInt(document.form1.farbe1.value) * 10 + 
+            parseInt(document.form1.farbe2.value)) * 
+            parseFloat(document.form1.farbe3.value); 
+}
+
+function calcOhm()
+{
+  
+  var Ohm = calcOhm1();
+  var OhmStr  = "" + Ohm;
+  var OhmStrK = OhmStr;
+  
+  if (Ohm >= 1000000000)
+  {
+    OhmStrK = (Ohm / 1000000000) + "G";
+  }
+  else
+  if (Ohm >= 1000000)
+  {
+    OhmStrK = (Ohm / 1000000) + "M";
+  }
+  else
+  if (Ohm >= 1000)
+  {
+    OhmStrK = "" + (Ohm / 1000) + "K";
+  }
+  OhmStr += " (" + OhmStrK + ") Ω";
+  
+  return OhmStr;
+}
+
+</script>
+
+<center>
+
+<img src="widerstand.jpg" style='width: 90%; object-fit: contain'/>
+
+<form action="" method=post name="form1">
+<table border="1" cellpadding="8" width="320px">
+
+    <tr>
+    <td colspan="3">
+    <p style="color:white"><font size=2">
+    Der Widerstand wird aus den Ringen 1 bis 3 berechnet. Die Ringe 1 und 2 geben die 
+    ersten beiden Ziffern des Ohm-Wertes an. Diese werden mit dem Wert von Ring 3 multipliziert.
+    Ring 4 steht für die Toleranz des Wertes. Der Widerstand im Bild oben hat den Wert 10000Ω mit 5%
+    Toleranz (Braun-Schwarz-Orange-Gold).
+    </font>
+    </p>
+    </tr>
+    
+    <tr>
+        <td><p style="color:white">Ring 1</p></td>
+        <td><p style="color:white">Ring 2</p></td>
+        <td><p style="color:white">Ring 3</p></td>
+    </tr>
+
+    <tr>
+    <td>
+    <select name="farbe1" size="12">
+      <option value=0 style="color:#000000; background:#D0D0D0">Schwarz</option>
+      <option value=1 style="color:#993400; background:#D0D0D0">Braun</option>
+      <option value=2 style="color:#FE0000; background:#D0D0D0">Rot</option>
+      <option value=3 style="color:#FE9900; background:#D0D0D0">Orange</option>
+      <option value=4 style="color:#FFFF00; background:#D0D0D0">Gelb</option>
+      <option value=5 style="color:#00FF01; background:#D0D0D0">Grün</option>
+      <option value=6 style="color:#0000FE; background:#D0D0D0">Blau</option>
+      <option value=7 style="color:#81007F; background:#D0D0D0">Violett</option>
+      <option value=8 style="color:#808080; background:#D0D0D0">Grau</option>
+      <option value=9 style="color:#FFFFFF; background:#D0D0D0">Weiß</option>
+    </select>
+    </td>
+    
+    <td>
+    <select name="farbe2" size="12">
+      <option value=0 style="color:#000000; background:#D0D0D0">Schwarz</option>
+      <option value=1 style="color:#993400; background:#D0D0D0">Braun</option>
+      <option value=2 style="color:#FE0000; background:#D0D0D0">Rot</option>
+      <option value=3 style="color:#FE9900; background:#D0D0D0">Orange</option>
+      <option value=4 style="color:#FFFF00; background:#D0D0D0">Gelb</option>
+      <option value=5 style="color:#00FF01; background:#D0D0D0">Grün</option>
+      <option value=6 style="color:#0000FE; background:#D0D0D0">Blau</option>
+      <option value=7 style="color:#81007F; background:#D0D0D0">Violett</option>
+      <option value=8 style="color:#808080; background:#D0D0D0">Grau</option>
+      <option value=9 style="color:#FFFFFF; background:#D0D0D0">Weiß</option>
+    </select>
+    </td>
+    
+    <td>
+    <select name="farbe3" size="12">
+      <option style="color:#000000; background:#D0D0D0" value=1>Schwarz</option>
+      <option style="color:#993400; background:#D0D0D0" value=10>Braun</option>
+      <option style="color:#FE0000; background:#D0D0D0" value=100>Rot</option>
+      <option style="color:#FE9900; background:#D0D0D0" value=1000>Orange</option>
+      <option style="color:#FFFF00; background:#D0D0D0" value=10000>Gelb</option>
+      <option style="color:#00FF01; background:#D0D0D0" value=100000>Grün</option>
+      <option style="color:#0000FE; background:#D0D0D0" value=1000000>Blau</option>
+      <option style="color:#81007F; background:#D0D0D0" value=10000000>Violett</option>
+      <option style="color:#808080; background:#D0D0D0" value=100000000>Grau</option>
+      <option style="color:#FFFFFF; background:#D0D0D0" value=1000000000>Weiß</option>
+      <option style="color:#caca5e; background:#404040" value=0.1>Gold</option>
+      <option style="color:#c0c0c0; background:#404040" value=0.01>Silber</option>
+    </select>
+    </td>
+    
+    </tr>
+
+</table>  
+<p>
+<input type="button" value="Berechnen" onClick="document.form1.ohm.value=calcOhm();"><p>
+<input type="text" name="ohm" value="0">
+  
+</form>
+
+</center>
+
+</body>
+</html>
+
